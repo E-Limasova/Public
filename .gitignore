@@ -120,10 +120,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-touch .gitignore
-echo "__pycache__/" >> .gitignore
-echo "*.py[cod]" >> .gitignore
-# Добавьте остальные правила в .gitignore
-git add .gitignore
-git commit -m "Добавлен
 
