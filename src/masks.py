@@ -3,7 +3,7 @@ def get_mask_card_number(card_number: str) -> str:
     if not card_number.isdigit() or len(card_number) < 6:
         raise ValueError("Некорректный номер карты")
 
-    masked = card_number[:6] + " " + "** **" + " " + card_number[-4:]
+    masked = card_number[:6] + " ** ** " + card_number[-4:]
     return masked
 
 
