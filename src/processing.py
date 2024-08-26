@@ -32,8 +32,8 @@ print(list_of_dict)
 def sort_by_date(data, order='desc'):
     """
     Сортирует список словарей по полю 'date'.
-    :param data: Список словарей.
-    :param order: Порядок сортировки ('asc' или 'desc', по умолчанию 'desc').
+    data: Список словарей.
+    order: Порядок сортировки ('asc' или 'desc', по умолчанию 'desc').
     :return: Отсортированный список словарей.
     """
     if order not in ['asc', 'desc']:
