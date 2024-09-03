@@ -51,6 +51,7 @@ operations = [
     {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'}
 ]
 
+
 # Сортировка по убыванию даты
 sorted_operations = sort_by_date(operations)
 print(sorted_operations)
