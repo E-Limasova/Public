@@ -6,8 +6,8 @@ from src.masks import get_mask_account, get_mask_card_number
 
 
 def test_get_mask_card_number():
-    assert get_mask_card_number("1234567890123456") == "1234 56   3456"
-    assert get_mask_card_number("7000792289606361") == "7000 79   6361"
+    assert get_mask_card_number("1234567890123456") == "123456 ** ** 3456"
+    assert get_mask_card_number("7000792289606361") == "700079 ** ** 6361"
     with pytest.raises(ValueError):
         get_mask_card_number("12345")
 
