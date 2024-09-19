@@ -83,9 +83,10 @@ def generator_list():
         }
     ]
 
+
 def test_filter_by_currency(generator_list):
     generator = filter_by_currency(generator_list, "USD")
-    assert next (generator) == {
+    assert next(generator) == {
             "id": 939719570,
             "state": "EXECUTED",
             "date": "2018-06-30T02:08:58.425572",
@@ -131,11 +132,13 @@ def test_filter_by_currency(generator_list):
             "to": "Visa Platinum 8990922113665229"
         }
 
+
 def test_transaction_descriptions(generator_list):
     generator = transaction_descriptions(generator_list)
     for i in generator_list:
-        assert next (generator) == i["description"]
+        assert next(generator) == i["description"]
+
 
 def test_card_number_generator():
-    assert card_number_generator(1,5) == ["0000 0000 0000 0001",
-    "0000 0000 0000 0002", "0000 0000 0000 0003", "0000 0000 0000 0004", "0000 0000 0000 0005"]
+    assert card_number_generator(1, 5) == ["0000 0000 0000 0001",
+ "0000 0000 0000 0002", "0000 0000 0000 0003", "0000 0000 0000 0004", "0000 0000 0000 0005"]
