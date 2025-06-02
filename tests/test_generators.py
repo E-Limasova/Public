@@ -140,5 +140,10 @@ def test_transaction_descriptions(generator_list):
 
 
 def test_card_number_generator():
-    assert card_number_generator(1, 5) == ["0000 0000 0000 0001",
- "0000 0000 0000 0002", "0000 0000 0000 0003", "0000 0000 0000 0004", "0000 0000 0000 0005"]
+    assert card_number_generator(1, 5) == [
+        "0000 0000 0000 0001",
+        "0000 0000 0000 0002",
+        "0000 0000 0000 0003",
+        "0000 0000 0000 0004",
+        "0000 0000 0000 0005"
+    ]
