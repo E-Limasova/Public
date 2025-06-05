@@ -1,13 +1,29 @@
-# decorators.py
-from decorators import log
-
-@log(filename="mylog.txt")
-def divide(x, y):
-    return x / y
-
 import functools
 import logging
-from datetime import datetime
+
+
+def get_logger(func_name, filename=None):
+    """
+    Создаёт и возвращает логгер для функции.
+
+    Args:
+        func_name (str): Имя функции, для которой создаётся логгер.
+        filename (str, optional): Имя файла для записи логов. Если None — логирование в консоль.
+
+    Returns:
+        logging.Logger: Настроенный логгер.
+    """
+    logger = logging.getLogger(func_name)
+    logger.setLevel(logging.INFO)
+
+    # Избежать повторного добавления хендлеров
+    if not logger.handlers:
+        handler = logging.FileHandler(filename) if filename else logging.StreamHandler()
+        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+
+    return logger
 
 
 def log(filename=None):
@@ -18,20 +34,7 @@ def log(filename=None):
         filename (str, optional): Имя файла для записи логов. Если не задано — логируется в консоль.
     """
     def decorator(func):
-        logger = logging.getLogger(func.__name__)
-        logger.setLevel(logging.INFO)
-
-        if filename:
-            handler = logging.FileHandler(filename)
-        else:
-            handler = logging.StreamHandler()
-
-        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-        handler.setFormatter(formatter)
-
-        # Убедиться, что не добавляется дубликат хендлеров
-        if not logger.handlers:
-            logger.addHandler(handler)
+        logger = get_logger(func.__name__, filename)
 
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
